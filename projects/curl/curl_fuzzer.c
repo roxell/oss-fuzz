@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
@@ -72,7 +73,7 @@ static size_t read_callback(char *buf, size_t size, size_t n, void *ctx) {
   return 1;
 }
 
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
   cur_data = Data;
   cur_size = Size;
   wrote = false;

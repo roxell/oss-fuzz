@@ -20,8 +20,11 @@
 make -j$(nproc)
 
 # Build the fuzzer.
-$CXX $CXXFLAGS $SRC/curl_fuzzer.cc -Iinclude lib/.libs/libcurl.a \
+$CC $CFLAGS -c $SRC/curl_fuzzer.c -I$SRC/curl/include -o $SRC/curl_fuzzer.o
+$CXX $CXXFLAGS \
   -o $OUT/curl_fuzzer \
+  $SRC/curl_fuzzer.o \
+  $SRC/curl/lib/.libs/libcurl.a \
   -Wl,-Bstatic -lssl -lcrypto -lz -lFuzzingEngine -Wl,-Bdynamic
 
 # Copy dictionary and options file to $OUT.

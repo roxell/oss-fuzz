@@ -20,5 +20,5 @@ RUN apt-get install -y make autoconf automake libtool libssl-dev zlib1g-dev
 
 RUN git clone --depth 1 https://github.com/curl/curl.git
 WORKDIR curl
-COPY build.sh curl_fuzzer.cc *.options *.dict $SRC/
+COPY build.sh curl_fuzzer.c *.options *.dict $SRC/
 
